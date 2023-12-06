@@ -1,13 +1,19 @@
 const express = require('express');
 const axios = require('axios');
+const helmet = require('helmet');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000; // Use environment variable for port
+
+app.use(helmet()); // Security middleware to set various HTTP headers
+app.use(cors()); // Enable CORS for all routes
+app.use(express.json()); // Middleware to parse JSON bodies
 
 const clientID = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
-const tokenEndpoint = 'https://login.microsoftonline.com/7a90723c-edc7-4879-9051-7d724504de18/oauth2/v2.0/token';
+const tokenEndpoint = process.env.TOKEN_ENDPOINT;
 
 app.get('/getAccessToken', async (req, res) => {
     try {
@@ -26,10 +32,10 @@ app.get('/getAccessToken', async (req, res) => {
         res.json({ accessToken: response.data.access_token });
     } catch (error) {
         console.error('Error fetching token:', error);
-        res.status(500).send('Error fetching token');
+        res.status(500).send('Internal Server Error');
     }
 });
 
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server running on port ${port}`);
 });
