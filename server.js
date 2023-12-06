@@ -41,18 +41,6 @@ async function fetchAccessToken() {
   }
 }
 
-app.get("/getAccessToken", async (req, res) => {
-  try {
-    if (!cachedToken.value || new Date() >= cachedToken.expiry) {
-      await fetchAccessToken();
-    }
-    res.json({ accessToken: cachedToken.value });
-  } catch (error) {
-    console.error("Error in /getAccessToken:", error.message);
-    res.status(500).send("Internal Server Error");
-  }
-});
-
 app.post("/relayQuestion", async (req, res) => {
   const { apiUrl, organisationKey, questionData } = req.body;
   try {

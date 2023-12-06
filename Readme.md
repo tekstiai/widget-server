@@ -31,11 +31,7 @@ This server, built with Node.js and Express, is designed to handle authenticatio
 
 ## Usage
 
-1. **Authentication Endpoint (`/getAccessToken`)**:
-    
-    - This endpoint fetches an access token.
-    - Use this token in subsequent requests to authenticate with the TekstiAI widget.
-2. **Relay Question Endpoint (`/relayQuestion`)**:
+- **Relay Question Endpoint (`/relayQuestion`)**:
     
     - Allows sending questions to the TekstiAI widget.
     - Requires the following in the request body:
