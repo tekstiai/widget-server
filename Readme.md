@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This README provides guidance on how to implement and use the TekstiAI Widget Authentication Server. This server, built with Node.js and Express, is designed to handle authentication and relay questions to the TekstiAI widget.
+This server, built with Node.js and Express, is designed to handle authentication and relay questions to the TekstiAI widget.
 
 ## Prerequisites
 
